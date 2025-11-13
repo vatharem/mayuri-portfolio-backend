@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+  mysql-db:
+    image: mysql:8.1
+    container_name: myportfolio-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: portfolio_db
+      MYSQL_USER: portfolio_user
+      MYSQL_PASSWORD: userpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  backend:
+    build: .
+    container_name: myportfolio-backend
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/portfolio_db
+      SPRING_DATASOURCE_USERNAME: portfolio_user
+      SPRING_DATASOURCE_PASSWORD: userpassword
+      GMAIL_USERNAME: vathare69@gmail.com
+      GMAIL_PASSWORD: hleijamoyozcuxri
+    depends_on:
+      - mysql-db
+
+volumes:
+  mysql_data:
