@@ -1,4 +1,4 @@
-package com.portfolio.mayuri.Config;
+package com.portfolio.mayuri.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
