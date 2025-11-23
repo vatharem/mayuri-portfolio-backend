@@ -14,6 +14,7 @@ public class CorsConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                         .allowedOrigins(
+                                "https://my-portfolio-fjdr-rhj4hvcas-mayuris-projects-62260ff4.vercel.app",
                                 "https://my-portfolio-fjdr.vercel.app",
                                 "http://localhost:3000"
                         )
