@@ -14,11 +14,12 @@ public class CorsConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                         .allowedOrigins(
-                                "https://my-portfolio-fjdr-j454jggyw-mayuris-projects-62260ff4.vercel.app",
+                                "https://my-portfolio-fjdr.vercel.app",
                                 "http://localhost:3000"
                         )
-                        .allowedMethods("GET", "POST", "PUT", "DELETE")
-                        .allowedHeaders("*");
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedHeaders("*")
+                        .allowCredentials(true);
             }
         };
     }
