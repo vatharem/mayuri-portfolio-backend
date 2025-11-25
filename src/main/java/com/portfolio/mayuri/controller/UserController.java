@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(origins = "https://my-portfolio-fjdr.vercel.app") // frontend origin
+@CrossOrigin(origins = "https://myportfolio-frontend-pi.vercel.app/") // frontend origin
 public class UserController {
 
     @Autowired
