@@ -9,11 +9,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(origins = {
-        "http://localhost:5173",
-        "http://localhost:3000",
-        "https://myportfolio-frontend-pi.vercel.app"
-})
 public class UserController {
 
     @Autowired
@@ -59,18 +54,14 @@ public class UserController {
             this.message = message;
         }
 
-        // getters & setters
         public String getStatus() { return status; }
-        public void setStatus(String status) { this.status = status; }
         public String getMessage() { return message; }
-        public void setMessage(String message) { this.message = message; }
     }
 
     static class LoginRequest {
         private String email;
         private String password;
 
-        // getters & setters
         public String getEmail() { return email; }
         public void setEmail(String email) { this.email = email; }
         public String getPassword() { return password; }
@@ -86,10 +77,7 @@ public class UserController {
             this.user = user;
         }
 
-        // getters & setters
         public String getStatus() { return status; }
-        public void setStatus(String status) { this.status = status; }
         public User getUser() { return user; }
-        public void setUser(User user) { this.user = user; }
     }
 }
