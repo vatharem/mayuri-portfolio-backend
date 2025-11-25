@@ -16,7 +16,7 @@ public class CorsConfig {
                 registry.addMapping("/**")
                         .allowedOriginPatterns(
                                 "http://localhost:3000",
-                                "https://my-portfolio-fjdr.vercel.app",
+                                "https://myportfolio-frontend-pi.vercel.app",
                                 "https://*.vercel.app"
                         )
                         .allowedMethods("*")
