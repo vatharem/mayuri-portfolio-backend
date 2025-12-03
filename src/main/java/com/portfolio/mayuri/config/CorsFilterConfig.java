@@ -26,8 +26,7 @@ public class CorsFilterConfig {
         // AND your specific production URL.
         config.setAllowedOriginPatterns(Arrays.asList(
                 "http://localhost:3000",        // React Localhost
-                "http://localhost:5173",        // Vite Localhost
-                "https://*.vercel.app",         // Wildcard for all Vercel deployments
+                "http://localhost:5173",        // Vite Localhost// Wildcard for all Vercel deployments
                 "https://myportfolio-frontend-pi.vercel.app" // Explicit Prod URL
         ));
 
