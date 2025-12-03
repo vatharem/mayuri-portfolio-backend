@@ -16,7 +16,9 @@ public class CorsFilterConfig {
         CorsConfiguration config = new CorsConfiguration();
 
         config.setAllowCredentials(true);
-        config.setAllowedOrigins(Arrays.asList(
+
+        // Use allowedOriginPatterns instead of allowedOrigins
+        config.setAllowedOriginPatterns(Arrays.asList(
                 "http://localhost:3000",
                 "http://localhost:5173",
                 "https://myportfolio-frontend-pi.vercel.app",
@@ -24,7 +26,13 @@ public class CorsFilterConfig {
         ));
 
         config.addAllowedHeader("*");
-        config.addAllowedMethod("*");
+        config.addExposedHeader("*");
+
+        config.addAllowedMethod("GET");
+        config.addAllowedMethod("POST");
+        config.addAllowedMethod("PUT");
+        config.addAllowedMethod("DELETE");
+        config.addAllowedMethod("OPTIONS");   // <-- VERY IMPORTANT
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
