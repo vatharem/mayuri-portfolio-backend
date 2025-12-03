@@ -2,6 +2,9 @@ package com.portfolio.mayuri.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -38,5 +41,15 @@ public class CorsFilterConfig {
         source.registerCorsConfiguration("/**", config);
 
         return new CorsFilter(source);
+    }
+    @CrossOrigin(origins = {
+            "http://localhost:3000",
+            "http://localhost:5173",
+            "https://myportfolio-frontend-pi.vercel.app",
+            "https://myportfolio-frontend-qjlqimbe0-mayuris-projects-62260ff4.vercel.app"
+    })
+    @RequestMapping(value = "/**", method = RequestMethod.OPTIONS)
+    public void handleOptions() {
+        // Empty method, just to allow preflight
     }
 }
