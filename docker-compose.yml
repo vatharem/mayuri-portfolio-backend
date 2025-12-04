@@ -10,6 +10,6 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql-275eb8b-mayuriv2003-1ef3.f.aivencloud.com:11491/defaultdb?sslMode=REQUIRED&useSSL=true&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: avnadmin
-      SPRING_DATASOURCE_PASSWORD: ***REMOVED***
+      SPRING_DATASOURCE_PASSWORD: YOUR_AIVEN_PASSWORD
       GMAIL_USERNAME: vathare69@gmail.com
       GMAIL_PASSWORD: hleijamoyozcuxri
