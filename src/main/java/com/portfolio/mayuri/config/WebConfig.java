@@ -1,5 +1,4 @@
-package com.portfolio.mayuri.Config;
-// <-- CHANGE THIS TO YOUR PACKAGE
+package com.portfolio.mayuri.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,19 +6,19 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class CorsConfig {
+public class WebConfig {
 
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-
-                String deployedUrl = "https://myportfolio-frontend-pi.vercel.app";
-                String localUrl = "http://localhost:3000";
-
                 registry.addMapping("/**")
-                        .allowedOrigins(localUrl, deployedUrl)
+                        .allowedOrigins(
+                                "https://myportfolio-frontend-pi.vercel.app",
+                                "https://myportfolio-frontend-dgg70nl8y-mayuris-projects-62260ff4.vercel.app",
+                                "http://localhost:3000"
+                        )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
