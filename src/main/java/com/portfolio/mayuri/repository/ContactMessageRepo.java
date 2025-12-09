@@ -1,5 +1,4 @@
 package com.portfolio.mayuri.repository;
-
 import com.portfolio.mayuri.Entity.ContactMassege;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
