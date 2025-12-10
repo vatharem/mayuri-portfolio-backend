@@ -1,28 +1,42 @@
 package com.portfolio.mayuri.controller;
+
+
 import com.portfolio.mayuri.entity.ContactMessage;
 import com.portfolio.mayuri.dto.ContactRequest;
 import com.portfolio.mayuri.repository.ContactMessageRepo;
-import jakarta.mail.MessagingException;
-import jakarta.mail.internet.MimeMessage;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
+
+import com.sendgrid.Method;
+import com.sendgrid.Request;
+import com.sendgrid.SendGrid;
+
+import com.sendgrid.helpers.mail.Mail;
+import com.sendgrid.helpers.mail.objects.Content;
+import com.sendgrid.helpers.mail.objects.Email;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+import java.io.IOException;
+
 
 @RestController
 @RequestMapping("/api")
 public class ContactController {
 
-    @Autowired
-    private JavaMailSender mailSender;
+    @Value("${sendgrid.api.key}")
+    private String sendGridApiKey;
 
-    @Autowired
-    private ContactMessageRepo messageRepo;
+    @Value("${sendgrid.from.email}")
+    private String fromEmail;   // your verified single sender email
+
+    private final ContactMessageRepo messageRepo;
+
+    public ContactController(ContactMessageRepo messageRepo) {
+        this.messageRepo = messageRepo;
+    }
 
     @PostMapping("/contact")
-    public String sendEmailAndSave(@RequestBody ContactRequest request) throws MessagingException {
+    public String sendEmailAndSave(@RequestBody ContactRequest request) throws IOException {
 
-        // Save message to database
+        // 1️⃣ Save into database
         ContactMessage message = new ContactMessage(
                 request.getName(),
                 request.getEmail(),
@@ -30,32 +44,44 @@ public class ContactController {
         );
         messageRepo.save(message);
 
-        // Email to YOU
-        MimeMessage ownerMsg = mailSender.createMimeMessage();
-        MimeMessageHelper ownerHelper = new MimeMessageHelper(ownerMsg, true);
-        ownerHelper.setTo("vathare69@gmail.com");
-        ownerHelper.setSubject("📩 New Contact from " + request.getName());
-        ownerHelper.setText(
+        // 2️⃣ Email to YOU (notification)
+        sendMail(
+                fromEmail,
+                "vathare69@gmail.com",
+                "📩 New Contact from " + request.getName(),
                 "Name: " + request.getName() + "<br>" +
                         "Email: " + request.getEmail() + "<br>" +
-                        "Message: " + request.getMessage(),
-                true
+                        "Message: " + request.getMessage()
         );
-        mailSender.send(ownerMsg);
 
-        // Email to USER
-        MimeMessage userMsg = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(userMsg, true);
-        helper.setTo(request.getEmail());
-        helper.setSubject("Thank You for Contacting Me!");
-        helper.setText(
+        // 3️⃣ Email to USER (thank you message)
+        sendMail(
+                fromEmail,
+                request.getEmail(),
+                "Thank You for Contacting Me!",
                 "<h3>Hi " + request.getName() + ",</h3>" +
                         "<p>Thank you for contacting me! I will get back to you soon.</p>" +
-                        "<p>Regards,<br><b>Mayuri</b></p>",
-                true
+                        "<p>Regards,<br><b>Mayuri</b></p>"
         );
-        mailSender.send(userMsg);
 
         return "Message saved and emails sent successfully!";
+    }
+
+    //  Helper method to send email using SendGrid
+    private void sendMail(String from, String to, String subject, String body) throws IOException {
+        Email fromEmailObj = new Email(from);
+        Email toEmailObj = new Email(to);
+
+        Content content = new Content("text/html", body);
+        Mail mail = new Mail(fromEmailObj, subject, toEmailObj, content);
+
+        SendGrid sg = new SendGrid(sendGridApiKey);
+        Request req = new Request();
+
+        req.setMethod(Method.POST);
+        req.setEndpoint("mail/send");
+        req.setBody(mail.build());
+
+        sg.api(req); // send email
     }
 }
