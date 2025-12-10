@@ -1,0 +1,14 @@
+com\portfolio\mayuri\config\WebConfig.class
+com\portfolio\mayuri\dto\ContactRequest.class
+com\portfolio\mayuri\config\WebConfig$1.class
+com\portfolio\mayuri\repository\UserRepo.class
+com\portfolio\mayuri\entity\ContactMessage.class
+com\portfolio\mayuri\controller\UserController$LoginResponse.class
+com\portfolio\mayuri\controller\UserController.class
+com\portfolio\mayuri\DemoApplication.class
+com\portfolio\mayuri\repository\ContactMessageRepo.class
+com\portfolio\mayuri\Service\UserService.class
+com\portfolio\mayuri\controller\UserController$LoginRequest.class
+com\portfolio\mayuri\controller\UserController$Response.class
+com\portfolio\mayuri\entity\User.class
+com\portfolio\mayuri\controller\ContactController.class
