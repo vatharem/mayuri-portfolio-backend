@@ -1,10 +1,10 @@
-package com.portfolio.mayuri.Entity;
+package com.portfolio.mayuri.entity;
 
 
 import jakarta.persistence.*;
 @Entity
 @Table(name = "contact_messages")
-public class ContactMassege {
+public class ContactMessage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,17 +15,17 @@ public class ContactMassege {
     @Column(length = 2000)
     private String message;
 
-    public ContactMassege() {
+    public ContactMessage() {
     }
 
-    public ContactMassege(Long id, String name, String email, String message) {
+    public ContactMessage(Long id, String name, String email, String message) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.message = message;
     }
 
-    public ContactMassege(String name, String email, String message) {
+    public ContactMessage(String name, String email, String message) {
         this.name = name;
         this.email = email;
         this.message = message;

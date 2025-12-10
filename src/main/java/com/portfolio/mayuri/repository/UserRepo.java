@@ -2,7 +2,7 @@ package com.portfolio.mayuri.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.portfolio.mayuri.Entity.*;
+import com.portfolio.mayuri.entity.*;
 import java.util.Optional;
 
 @Repository

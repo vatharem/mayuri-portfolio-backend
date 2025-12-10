@@ -1,7 +1,7 @@
 package com.portfolio.mayuri.Service;
 
 
-import com.portfolio.mayuri.Entity.User;
+import com.portfolio.mayuri.entity.User;
 import com.portfolio.mayuri.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

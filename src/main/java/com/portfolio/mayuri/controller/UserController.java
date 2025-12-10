@@ -1,6 +1,6 @@
 package com.portfolio.mayuri.controller;
 
-import com.portfolio.mayuri.Entity.User;
+import com.portfolio.mayuri.entity.User;
 import com.portfolio.mayuri.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

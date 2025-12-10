@@ -1,5 +1,5 @@
 package com.portfolio.mayuri.controller;
-import com.portfolio.mayuri.Entity.ContactMassege;
+import com.portfolio.mayuri.entity.ContactMessage;
 import com.portfolio.mayuri.dto.ContactRequest;
 import com.portfolio.mayuri.repository.ContactMessageRepo;
 import jakarta.mail.MessagingException;
@@ -7,10 +7,7 @@ import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
@@ -25,8 +22,8 @@ public class ContactController {
     @PostMapping("/contact")
     public String sendEmailAndSave(@RequestBody ContactRequest request) throws MessagingException {
 
-        // Save message in Aiven MySQL
-        ContactMassege message = new ContactMassege(
+        // Save message to database
+        ContactMessage message = new ContactMessage(
                 request.getName(),
                 request.getEmail(),
                 request.getMessage()

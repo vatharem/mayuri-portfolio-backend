@@ -1,4 +1,4 @@
-package com.portfolio.mayuri.Entity;
+package com.portfolio.mayuri.entity;
 
 import jakarta.persistence.*;
 
