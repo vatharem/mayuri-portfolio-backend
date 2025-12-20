@@ -14,7 +14,7 @@ import jakarta.mail.internet.MimeMessage;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin("*")
+
 public class ContactController {
 
     @Value("${spring.mail.username}")
