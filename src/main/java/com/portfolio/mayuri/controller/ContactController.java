@@ -67,14 +67,16 @@ public class ContactController {
         }
     }
 
-    private void sendEmail(String from, String to, String subject, String html) throws Exception {
-        MimeMessage message = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+    private void sendEmail(String replyTo, String to, String subject, String html) throws Exception {
 
-        helper.setFrom(from);
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, "UTF-8");
+
+        helper.setFrom(fromEmail);      // MUST be authenticated Gmail
         helper.setTo(to);
         helper.setSubject(subject);
         helper.setText(html, true);
+        helper.setReplyTo(replyTo);     // user email / admin reply
 
         mailSender.send(message);
     }
