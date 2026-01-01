@@ -2,6 +2,7 @@ com\portfolio\mayuri\config\WebConfig.class
 com\portfolio\mayuri\dto\ContactRequest.class
 com\portfolio\mayuri\config\WebConfig$1.class
 com\portfolio\mayuri\repository\UserRepo.class
+com\portfolio\mayuri\config\CorsConfig.class
 com\portfolio\mayuri\entity\ContactMessage.class
 com\portfolio\mayuri\controller\UserController$LoginResponse.class
 com\portfolio\mayuri\controller\UserController.class
