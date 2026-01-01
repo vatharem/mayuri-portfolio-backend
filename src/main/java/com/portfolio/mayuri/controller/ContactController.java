@@ -70,14 +70,18 @@ public class ContactController {
     private void sendEmail(String replyTo, String to, String subject, String html) throws Exception {
 
         MimeMessage message = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message, "UTF-8");
+        MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
-        helper.setFrom(fromEmail);      // MUST be authenticated Gmail
+        helper.setFrom(fromEmail);      // authenticated Gmail
         helper.setTo(to);
         helper.setSubject(subject);
         helper.setText(html, true);
-        helper.setReplyTo(replyTo);     // user email / admin reply
+
+        if (replyTo != null && !replyTo.isEmpty()) {
+            helper.setReplyTo(replyTo);
+        }
 
         mailSender.send(message);
     }
+
 }
