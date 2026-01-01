@@ -30,7 +30,7 @@ public class ContactController {
 
     @PostMapping("/contact")
     public ResponseEntity<String> sendMail(@RequestBody ContactRequest request) {
-
+        System.out.println("FROM EMAIL = " + fromEmail);
         try {
             // Save to DB
             repo.save(new ContactMessage(
