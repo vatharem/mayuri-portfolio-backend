@@ -20,11 +20,12 @@ public class ContactController {
     private final ContactMessageRepo repo;
     private final JavaMailSender mailSender;
 
-    @Value("${MAIL_FROM}")              // Verified Brevo sender email
+    @Value("${mail.from}")
     private String mailFrom;
 
-    @Value("${CONTACT_RECEIVER_EMAIL}") // Your email to receive messages
+    @Value("${mail.admin}")
     private String contactReceiverEmail;
+
 
     @PostConstruct
     public void printEnv() {
