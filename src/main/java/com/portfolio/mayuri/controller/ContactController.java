@@ -14,12 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(
-        origins = {
-                "https://myportfolio-frontend-pi.vercel.app"
-        },
-        allowCredentials = "true"
-)
  // allow frontend access
 public class ContactController {
 
