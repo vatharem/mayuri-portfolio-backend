@@ -70,6 +70,9 @@ public class ContactController {
                             "<p><b>Message:</b><br>" + request.getMessage() + "</p>"
             );
             System.out.println("Admin mail sent to: " + contactReceiverEmail);
+            System.out.println("BREVO FROM: " + mailFrom);
+            System.out.println("ADMIN TO: " + contactReceiverEmail);
+
 
             // 4️⃣ Send thank-you mail TO USER
             sendEmail(
