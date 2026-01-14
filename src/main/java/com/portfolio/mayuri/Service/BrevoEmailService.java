@@ -12,8 +12,9 @@ import java.util.*;
 @Service
 public class BrevoEmailService {
 
-    @Value("${brevo.api.url}")
+    @Value("${BREVO_API_URL}")
     private String apiUrl;
+
 
     @Value("${brevo.api.key}")
     private String apiKey;
