@@ -19,7 +19,7 @@ public class BrevoEmailService {
     @Value("${MAIL_FROM}")
     private String senderEmail;
 
-    @Value("${BREVO_SENDER_NAME}")
+    @Value("${BREVO_SENDER_NAME:Mayuri}")
     private String senderName;
 
     private final RestTemplate restTemplate;
