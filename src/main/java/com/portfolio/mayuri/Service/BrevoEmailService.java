@@ -1,7 +1,4 @@
 package com.portfolio.mayuri.Service;
-
-
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -16,13 +13,13 @@ public class BrevoEmailService {
     private String apiUrl;
 
 
-    @Value("${brevo.api.key}")
+    @Value("${BREVO_API_KEY}")
     private String apiKey;
 
-    @Value("${brevo.sender.email}")
+    @Value("${MAIL_FROM}")
     private String senderEmail;
 
-    @Value("${brevo.sender.name}")
+    @Value("${BREVO_SENDER_NAME}")
     private String senderName;
 
     private final RestTemplate restTemplate;
